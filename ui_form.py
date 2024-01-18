@@ -366,7 +366,7 @@ class Ui_Widget(object):
 
         self.setButton = QPushButton(Widget)
         self.setButton.setObjectName(u"setButton")
-        self.setButton.setGeometry(QRect(100, 260, 80, 24))
+        self.setButton.setGeometry(QRect(90, 260, 80, 24))
         self.setButton.setStyleSheet(u"QPushButton#setButton:hover {\n"
 "	\n"
 "	background-color: rgb(255, 255, 255);\n"
@@ -384,13 +384,30 @@ class Ui_Widget(object):
         self.listWidget.setStyleSheet(u"border: 2px solid;\n"
 "color: rgb(255, 255, 255);\n"
 "border-color: rgb(255, 156, 43);")
-        self.removeButton = QPushButton(Widget)
+        self.horizontalLayoutWidget_2 = QWidget(Widget)
+        self.horizontalLayoutWidget_2.setObjectName(u"horizontalLayoutWidget_2")
+        self.horizontalLayoutWidget_2.setGeometry(QRect(370, 310, 160, 71))
+        self.horizontalLayout_3 = QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.stopButton = QPushButton(self.horizontalLayoutWidget_2)
+        self.stopButton.setObjectName(u"stopButton")
+        self.stopButton.setStyleSheet(u"QPushButton#removeButton:hover {\n"
+"		\n"
+"	background-color: rgb(255, 255, 255);\n"
+" }")
+
+        self.horizontalLayout_3.addWidget(self.stopButton)
+
+        self.removeButton = QPushButton(self.horizontalLayoutWidget_2)
         self.removeButton.setObjectName(u"removeButton")
-        self.removeButton.setGeometry(QRect(400, 310, 80, 24))
         self.removeButton.setStyleSheet(u"QPushButton#removeButton:hover {\n"
 "		\n"
 "	background-color: rgb(255, 255, 255);\n"
 " }")
+
+        self.horizontalLayout_3.addWidget(self.removeButton)
+
 
         self.retranslateUi(Widget)
 
@@ -486,6 +503,7 @@ class Ui_Widget(object):
 
         self.setButton.setText(QCoreApplication.translate("Widget", u"SET", None))
         self.labelTime.setText(QCoreApplication.translate("Widget", u"Current Time", None))
+        self.stopButton.setText(QCoreApplication.translate("Widget", u"STOP", None))
         self.removeButton.setText(QCoreApplication.translate("Widget", u"Remove", None))
     # retranslateUi
 

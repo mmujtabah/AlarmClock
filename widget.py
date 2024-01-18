@@ -26,10 +26,11 @@ class Widget(QWidget):
 
         self.ui.setButton.clicked.connect(self.addAlarm)
         self.ui.removeButton.clicked.connect(self.removeAlarm)
+        self.ui.stopButton.clicked.connect(self.stopAlarm)
 
         self.checkAlarmTimer = QTimer(self)
         self.checkAlarmTimer.timeout.connect(self.checkAlarm)
-        self.checkAlarmTimer.start(10000)
+        self.checkAlarmTimer.start(1000)
 
     def updateTime(self):
         current_time = QDateTime.currentDateTime().toString('hh:mm:ss')
@@ -45,10 +46,11 @@ class Widget(QWidget):
             minTime = int(alarm_time[3:5])
             currentHour = currentTime.hour()
             currentMin = currentTime.minute()
-            if hourTime == currentHour and minTime == currentMin:
+            currentSec = currentTime.second()
+            if hourTime == currentHour and minTime == currentMin and currentSec == 0:
                 flag = True
                 print(f"Alarm Time: {alarm_time}")
-                
+
         if flag:
             mixer.music.load("sound.mp3")
             mixer.music.play(loops=0)
@@ -83,7 +85,10 @@ class Widget(QWidget):
             # Remove the selected item from the QListWidget
             self.ui.listWidget.takeItem(self.ui.listWidget.row(selected_item))
 
-            
+    def stopAlarm(self):
+        mixer.music.stop()
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     widget = Widget()
